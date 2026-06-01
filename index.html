@@ -434,7 +434,10 @@
         
         html += `<div class="action-buttons" style="display:flex; justify-content:space-between; margin-top:20px; gap:15px;">
                     <button class="btn-start" style="background:var(--btn-blue); flex:1;" onclick="showQuestion(${idx-1})" ${idx===0?'disabled':''}>Lùi lại</button>
-                    <button class="btn-start" style="background:var(--btn-blue); flex:1;" onclick="showQuestion(${idx+1})" ${idx===24?'disabled':''}>Tiếp theo</button>
+                    ${idx === 24 
+                        ? `<button class="btn-start" style="background:var(--success); flex:1;" onclick="openConfirmModal()">Hoàn thành & Nộp bài</button>`
+                        : `<button class="btn-start" style="background:var(--btn-blue); flex:1;" onclick="showQuestion(${idx+1})">Tiếp theo</button>`
+                    }
                  </div>`;
         document.getElementById('quiz-content').innerHTML = html;
         renderGrid();
